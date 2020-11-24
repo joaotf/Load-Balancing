@@ -1,0 +1,86 @@
+1 - Instalar NGINX
+2 - Entrar na pasta conf.d e mover o arquivo 'loadbalance.conf'
+3 - Subir os servidores escravos
+4 - O NGINX por padrão será instalado no IP da máquina
+5 - Rodar
+
+
+Comandos para rodar o servidor
+
+sudo systemctl start nginx
+sudo systemctl restart nginx
+
+
+Servidor NGINX (Balanceamento de Carga {
+    IP da Máquina
+}
+Servidores escravos {
+    pm2 start index.js -f -- --port 8000
+    pm2 start index.js -f -- --port 8001
+    pm2 start index.js -f -- --port 8002
+    pm2 start index.js -f -- --port 8003
+}
+
+Testes {
+    Requisições: {
+        Tentativa 1: {
+            Tamanho da Array : 1000
+            Random : 1000
+            Tempo de Execução : [
+                                11.7ms,
+                                7.69ms,
+                                12.35ms,
+                                12.27ms,
+                                12.45ms
+                                ]
+            Média : 10.8 ms
+        },
+        Tentativa 2: {
+            Tamanho da Array : 10000
+            Random : 1000
+            Tempo de Execução : [
+                                190ms,
+                                176ms,
+                                202ms,
+                                179ms,
+                                174ms
+                                ]
+            Média : 184.2 ms
+        },
+        Tentativa 3: {
+            Tamanho da Array : 100000
+            Random : 1000
+            Tempo de Execução : [
+                                23.7s,
+                                21.1s,
+                                20.8s,
+                                23.7s,
+                                23.9s
+                                ]
+            Média : 22.64 segundos
+        },
+        Tentativa 4: {
+            Tamanho da Array : 100000
+            Random : 1000
+            Tempo de Execução : [
+                                23.7s,
+                                21.1s,
+                                20.8s,
+                                23.7s,
+                                23.9s
+                                ]
+            Média : 22.64 segundos
+        },
+        Tentativa 5: {
+            Tamanho da Array : 1000000
+            Random : 1000
+            Tempo de Execução : [
+                                16 minutos
+                                ]
+            Resultado: Depois de 16 minutos o servidor 
+        },
+        
+    }
+    
+    
+}
