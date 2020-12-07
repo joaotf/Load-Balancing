@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 
 const port = process.argv[3]
 
@@ -28,17 +29,22 @@ function bubble_Sort(a)
 
 function generateArray(){
   array = [];
-  for (let index = 0; index < 1000000; index++) {
-    array.push(Math.random(1000));
-  }
 
+  for (let index = 0; index < 100; index++) {
+    array.push(Math.round(Math.random(1000) * 10));
+  }
+  
   return array;
 }
 
 app.get('/',(req,res) => {
   array = generateArray();
-
+  console.log(array);
+  
   bubble_Sort(array);
+
+  console.log(array);
+  
 
   return res.status(200).send("Task done!")
 })
